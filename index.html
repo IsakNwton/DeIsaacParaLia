@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para Lía Ameeran 💖</title>
 
-    <!-- Google Fonts para el nuevo rediseño -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
@@ -45,16 +45,12 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #050505;
+            background-color: #020617; /* Fondo azul muy oscuro */
             touch-action: none;
         }
         #root {
             width: 100%;
             height: 100%;
-        }
-        /* Clase de ayuda para el pixel art */
-        .pixel-art {
-            image-rendering: pixelated;
         }
     </style>
 </head>
@@ -96,36 +92,37 @@
         const RotateCw = (props) => <IconWrapper icon="fa-rotate-right" {...props} />;
         const AlertTriangle = (props) => <IconWrapper icon="fa-triangle-exclamation" {...props} />;
 
-        // --- ASSETS & CONFIG (RUTAS LOCALES PARA TUS IMÁGENES) ---
+        // --- ASSETS & CONFIG ---
+        // Pega aquí tus enlaces de Imgur o donde hayas subido tus imágenes
         const PHOTOS = {
-          // TUS ARCHIVOS LOCALES (Carpeta 'assets' al lado del index.html)
-          avatar: "./assets/avatar.png",              // Sprite de Lía
-          plant: "./assets/planta.png",               // Foto o sprite de la planta
-          enemy: "./assets/enemigo.png",              // Sprite de Camarón/Hongo
-          gun: "./assets/arma.png",                   // Sprite del Arma
-          apocalypse_bg: "./assets/fondo_restaurante.png", // Fondo del Restaurante Pixel Art
-          
-          // Otros assets en la nube (Puedes cambiarlos a locales igual si quieres)
-          antarctica_bg: "https://images.unsplash.com/photo-1548550023-2bf3c49b3420?auto=format&fit=crop&w=1000&q=80", 
+          avatar: "https://i.imgur.com/BEA1Jwg.jpeg", 
+          shrimp: "https://puntodelmar.com.mx/wp-content/uploads/2018/03/camaronmacuil.jpg",
+          apocalypse_bg: "https://www.revistaabogacia.com/wp-content/uploads/2022/01/Gastronomia-Los-Arcos-1068x499.jpg",
+          antarctica_bg: "https://tr.rbxcdn.com/180DAY-2d4e531ed035acccabd2f1a64404f8cb/500/280/Image/Jpeg/noFilter", 
+          antarctica_bgr3: "https://images.unsplash.com/photo-1548550023-2bf3c49b3420?auto=format&fit=crop&w=1000&q=80",
+          plant: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=500&q=80",
+          gun: "https://armas1000.cl/wp-content/uploads/2025/01/EC9459B-3D.webp",
           random: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6gl_vXeHIhk5ROr4pPzCRKKZuKbVVkpl9A&s",
-          tlous_meme: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20211209015400&path-prefix=es",
           
           // Fotos para el Quiz
-          quiz1: "https://i.ytimg.com/vi/dBuTGoacN2g/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBdQ9Hwr_rVwMLL1jQHGZYhrtCVyQ",
-          quiz2: "https://images.unsplash.com/photo-1529312266912-b33cfce2eefd?auto=format&fit=crop&w=400&q=80",
-          quiz3: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=80", 
-          quiz4: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=400&q=80", 
-          quiz5: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80", 
-          quiz6: "https://images.unsplash.com/photo-1493225457124-b1b702e6baf6?auto=format&fit=crop&w=400&q=80",
-          quiz7: "https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=400&q=80",
-          quiz8: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=400&q=80",
-          quiz9: "https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=400&q=80",
-          quiz10: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=400&q=80",
+          quiz1: "https://voca-land.sgp1.cdn.digitaloceanspaces.com/43844/1655520547415/a75e6b54b0eb6c50c98a722511d11073578a8f4f2fac3d48e9eaacec627d6a4c.jpg",
+          quiz2: "https://i.pinimg.com/736x/00/82/f1/0082f13303a71cbd956a47602911da57.jpg",
+          quiz3: "https://i.pinimg.com/1200x/b0/8e/a6/b08ea69ef3e72e937c32b52022456e41.jpg", 
+          quiz4: "https://i.imgur.com/fojRaTT.jpeg", 
+          quiz5: "https://i.pinimg.com/236x/75/27/c0/7527c06a69446a43d937142942cd0119.jpg", 
+          quiz6: "https://cdn.prod.website-files.com/662fb92f905585b61b12afd8/683941caf4bec9ae3a5c6992_e0aa3a83d800a52d6068135517a6ff0d_Birthday_V01_004%201.webp",
+          quiz7: "https://images7.memedroid.com/images/UPLOADED545/5fd39dcc4f2c2.jpeg",
+          quiz8: "https://thumbs.dreamstime.com/b/gota-de-sangre-con-los-pulgares-para-arriba-53667568.jpg",
+          shawarma: "https://cusiworld.com/wp-content/uploads/2024/05/shawarma-de-pollo-cusi-1200x675.jpeg",
+          nahla: "https://i.imgur.com/Ga3zGMS.jpeg",
           
-          // Fotos "trampa" para el juego del Corazón
-          bad1: "https://m.media-amazon.com/images/I/71q9LBr+o+L._AC_UF894,1000_QL80_.jpg", 
-          bad2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0OR5i16MYuaDnESJNcd6HKVHnkbicu_Avw&s", 
-          bad3: "https://cdn4.idcgames.com/storage/image/1258/free-new-logo/default.jpg"  
+          good3: "https://shapes.inc/api/public/avatar/mangomemesbot",  
+          good4: "https://assets.newsweek.com/wp-content/uploads/2025/10/67.png?w=1600&quality=80&webp=1",
+          
+          // Lo que NO le gusta a Lía
+          bad1: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSPWEa__2AmQVW6o3QBRB6cxX0dW3QWCtCJQ&s", 
+          bad2: "https://static.nationalgeographicla.com/files/styles/image_3200/public/coelho-domestico-ng.JPG.webp?w=1600&h=1056", 
+          bad3: "https://media.istockphoto.com/id/2220888331/es/vector/icono-de-mierda-cara-sonriente-s%C3%ADmbolo-emoji-vector-10-eps.jpg?s=612x612&w=0&k=20&c=umxprUDxLOejsBohOV3jD0eB-izR1CK2cMmShgWbWI0="  
         };
 
         const randomRange = (min, max) => Math.random() * (max - min) + min;
@@ -133,8 +130,8 @@
         // --- EFECTOS VISUALES ---
         const CRTEffect = () => (
           <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden h-full w-full">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(139,92,246,0.06),rgba(236,72,153,0.02),rgba(56,189,248,0.06))] z-50 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0)_50%,rgba(0,0,0,0.7)_100%)] z-40"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(59,130,246,0.06),rgba(234,179,8,0.02),rgba(14,165,233,0.06))] z-50 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0)_50%,rgba(0,0,0,0.8)_100%)] z-40"></div>
           </div>
         );
 
@@ -163,7 +160,7 @@
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 0.9, 0] }}
               transition={{ duration: 0.8 }}
-              className="absolute inset-0 bg-purple-600 mix-blend-multiply"
+              className="absolute inset-0 bg-blue-600 mix-blend-multiply"
             />
             <motion.div
               initial={{ scale: 0.2, opacity: 0 }}
@@ -173,7 +170,7 @@
                 rotate: [0, -10, 10, -10, 0]
               }}
               transition={{ duration: 1.5, ease: "circOut" }}
-              className="text-9xl landscape:text-7xl relative z-10 drop-shadow-[0_0_50px_rgba(168,85,247,1)]"
+              className="text-9xl landscape:text-7xl relative z-10 drop-shadow-[0_0_50px_rgba(59,130,246,1)]"
             >
               🗿
             </motion.div>
@@ -181,7 +178,7 @@
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: [0, 1, 0] }}
               transition={{ delay: 0.2, duration: 1.5 }}
-              className="absolute bottom-1/4 landscape:bottom-10 text-4xl landscape:text-2xl font-black text-purple-400 tracking-widest uppercase drop-shadow-lg"
+              className="absolute bottom-1/4 landscape:bottom-10 text-4xl landscape:text-2xl font-black text-blue-400 tracking-widest uppercase drop-shadow-lg"
             >
               RESURRECCIÓN
             </motion.div>
@@ -218,7 +215,7 @@
           const nextSlide = () => setSlide(s => s + 1);
 
           return (
-            <div className="h-full w-full flex flex-col items-center justify-center bg-black text-center p-6 relative overflow-hidden cursor-pointer select-none" onClick={nextSlide}>
+            <div className="h-full w-full flex flex-col items-center justify-center bg-slate-950 text-center p-6 relative overflow-hidden cursor-pointer select-none" onClick={nextSlide}>
               <AnimatePresence mode="wait">
                 {slide < slides.length && (
                   <motion.div
@@ -231,26 +228,26 @@
                   >
                     {slides[slide].img && (
                       <motion.div 
-                        className={`overflow-hidden border-[3px] border-violet-500 rounded-3xl shadow-[0_0_40px_rgba(139,92,246,0.5)] bg-zinc-900 shrink-0`}
+                        className={`overflow-hidden border-[3px] border-blue-500 rounded-3xl shadow-[0_0_40px_rgba(59,130,246,0.5)] bg-zinc-900 shrink-0`}
                         initial={{ scale: 0 }}
                         animate={{ scale: 1, rotate: [0, -2, 2, 0] }}
                       >
-                        <img src={slides[slide].img} className={`object-cover w-64 h-48 md:w-80 md:h-64 landscape:w-48 landscape:h-32 pixel-art`} alt="Slide visual" />
+                        <img src={slides[slide].img} className={`object-cover w-64 h-48 md:w-80 md:h-64 landscape:w-48 landscape:h-32`} alt="Slide visual" />
                       </motion.div>
                     )}
-                    <h1 className="text-2xl md:text-4xl landscape:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-white to-pink-300 leading-tight drop-shadow-lg">
+                    <h1 className="text-3xl md:text-5xl landscape:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-300 via-yellow-200 to-amber-300 leading-tight drop-shadow-2xl whitespace-pre-wrap">
                       {slides[slide].text}
                     </h1>
                     {slides[slide].sub && (
-                      <p className="text-pink-400 text-lg landscape:text-base font-bold italic animate-pulse">
+                      <p className="text-blue-300 text-lg landscape:text-base font-bold italic animate-pulse">
                         {slides[slide].sub}
                       </p>
                     )}
                   </motion.div>
                 )}
               </AnimatePresence>
-              <div className="absolute inset-0 z-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900 via-black to-black" />
-              <div className="absolute bottom-10 text-zinc-600 text-xs animate-bounce font-mono">Toca para saltar</div>
+              <div className="absolute inset-0 z-0 opacity-40 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-black to-black" />
+              <div className="absolute bottom-10 text-zinc-500 text-xs animate-bounce font-mono">Toca para saltar</div>
             </div>
           );
         };
@@ -288,56 +285,56 @@
             {
               id: 1,
               img: PHOTOS.quiz1,
-              text: "Completa la frase:\n\"I'm your dad, I'm your son. _______\"",
-              options: ["Ummm bobby", "Two steps ahead", "I'm the one who knocks", "Say my name"],
+              text: "¿Quién es la persona más hermosa del mundo?",
+              options: ["Tú, Lía Ameeran", "Poncerringo", "Yo, André Isaac", "El director"],
               correct: 0
             },
             {
               id: 2,
               img: PHOTOS.quiz2,
-              text: "¿Cuál de estas es la comida perfecta para Lía?",
+              text: "¿Cuál de estas comidas prepararía si tienes mucha hambre?",
               options: ["Hamburguesa", "Shawarma", "Tacos al pastor", "Pizza con piña"],
               correct: 1
             },
             {
               id: 3,
               img: PHOTOS.quiz3,
-              text: "Lía es una viajera experta. ¿A cuántos países en total ha viajado en su vida?",
+              text: "¿A cuántos países en total has viajado en tu vida?",
               options: ["10 países", "12 países", "16 países", "20 países"],
               correct: 2
             },
             {
               id: 4,
-              img: PHOTOS.quiz6,
+              img: PHOTOS.quiz4,
               text: "¿Cómo se llaman los integrantes de 5 Seconds of Summer (5SOS)?",
               options: ["Harry, Liam, Zayn, Niall", "Luke, Calum, Ashton, Michael", "Kendall, Logan, Carlos, James", "Joe, Kevin, Nick, Frankie"],
               correct: 1
             },
             {
               id: 5,
-              img: PHOTOS.quiz7,
+              img: PHOTOS.quiz5,
               text: "¿Cómo se llama el icónico álbum de Taylor Swift que marcó su transición completa al pop (y el año de su nacimiento)?",
               options: ["Red", "Speak Now", "Reputation", "1989"],
               correct: 3
             },
             {
               id: 6,
-              img: PHOTOS.quiz8,
-              text: "¿En qué fecha exacta nació el guapo de tu novio?",
+              img: PHOTOS.quiz6,
+              text: "¿En qué fecha exacta nació el guaporongo de tu novio?",
               options: ["27 de Enero de 2010", "15 de Febrero de 2009", "27 de Febrero de 2010", "12 de Enero de 2011"],
               correct: 0
             },
             {
               id: 7,
-              img: PHOTOS.quiz9,
-              text: "Si me quieres consentir y hacer muy feliz... ¿qué comida me vas a dar?",
+              img: PHOTOS.quiz7,
+              text: "¿Cuál de estás comidas preferiría comer YO si fuese a comer eso por 2 meses seguidos?",
               options: ["Pizza con pepperoni", "Tacos al pastor", "Espaguetti", "Hamburguesa doble"],
-              correct: 2
+              correct: 1
             },
             {
               id: 8,
-              img: PHOTOS.quiz10,
-              text: "Toco madera, pero si necesito sangre y además nos encanta la música... ¿Qué tipo de sangre soy?",
+              img: PHOTOS.quiz8,
+              text: "¿Cuál es mi tipo de sangre?",
               options: ["O Negativo", "A Positivo", "B Positivo", "AB Negativo"],
               correct: 1
             }
@@ -397,7 +394,7 @@
                 <i className="fa-solid fa-xmark text-zinc-600 text-xl"></i>
                 <div className="flex-1 h-4 bg-zinc-800 rounded-full overflow-hidden">
                    <motion.div 
-                     className="h-full bg-violet-500 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"
+                     className="h-full bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]"
                      initial={{ width: `${(currentQ / QUESTIONS.length) * 100}%` }}
                      animate={{ width: `${((currentQ + (status === 'correct' ? 1 : 0)) / QUESTIONS.length) * 100}%` }}
                    />
@@ -413,7 +410,7 @@
                   <h2 className="text-xl md:text-2xl landscape:text-lg font-bold text-white mb-4 whitespace-pre-wrap leading-tight text-center">{question.text}</h2>
                   <div className="w-full flex justify-center mb-6 landscape:mb-0 shrink-0">
                     <div className="w-32 h-32 md:w-48 md:h-48 landscape:w-32 landscape:h-32 bg-zinc-800 rounded-3xl overflow-hidden border-[3px] border-zinc-700 shadow-2xl">
-                      <img src={question.img} className="w-full h-full object-cover pixel-art" alt="Referencia" />
+                      <img src={question.img} className="w-full h-full object-cover" alt="Referencia" />
                     </div>
                   </div>
                 </div>
@@ -425,7 +422,7 @@
                       onClick={() => status === 'idle' && setSelected(i)}
                       className={`relative w-full p-3 md:p-4 landscape:p-2 rounded-2xl border-2 text-left font-bold text-base md:text-lg landscape:text-sm transition-all duration-200 transform active:translate-y-1 ${
                         selected === i 
-                          ? 'bg-violet-900/40 border-violet-400 text-violet-300' 
+                          ? 'bg-blue-900/40 border-blue-400 text-blue-300' 
                           : 'bg-zinc-900/50 border-zinc-700 text-white hover:bg-zinc-800'
                       }`}
                       style={{ 
@@ -448,7 +445,7 @@
                     {status === 'correct' && (
                       <div className="flex items-center gap-3 text-emerald-400 font-bold text-xl landscape:text-lg">
                         <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center"><i className="fa-solid fa-check"></i></div>
-                        ¡Perfecto, Lía!
+                        ¡Perfectooooo, Lía!
                       </div>
                     )}
                     {status === 'wrong' && (
@@ -466,7 +463,7 @@
                         disabled={selected === null}
                         className={`w-full py-4 landscape:py-3 rounded-2xl font-black text-lg landscape:text-base uppercase tracking-wider transition-all border-b-[4px] active:border-b-0 active:translate-y-1 ${
                           selected !== null 
-                            ? 'bg-violet-600 border-violet-800 text-white hover:bg-violet-500 shadow-[0_0_20px_rgba(139,92,246,0.4)]' 
+                            ? 'bg-blue-600 border-blue-800 text-white hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.4)]' 
                             : 'bg-zinc-800 border-zinc-900 text-zinc-600 cursor-not-allowed'
                         }`}
                       >
@@ -614,8 +611,8 @@
               >
                   <div className="absolute top-4 left-4 right-4 z-20 flex justify-between items-start font-mono font-bold pointer-events-none">
                     <div className="flex gap-4">
-                       <div className="bg-black/50 px-3 py-1 border-l-4 border-violet-500 text-violet-300">SURVIVE: {timeLeft}s</div>
-                       <div className="bg-fuchsia-900/80 px-3 py-1 rounded-full border border-fuchsia-500 text-white flex items-center gap-2">
+                       <div className="bg-black/50 px-3 py-1 border-l-4 border-blue-500 text-blue-300">SURVIVE: {timeLeft}s</div>
+                       <div className="bg-yellow-900/80 px-3 py-1 rounded-full border border-yellow-500 text-white flex items-center gap-2">
                            <span className="text-xl">🗿</span><span className="font-bold">∞</span>
                        </div>
                     </div>
@@ -627,10 +624,10 @@
                       <span className="text-xs text-white/50 mt-1">HP: {Math.ceil(health)}%</span>
                     </div>
                   </div>
-                  <div className="absolute inset-0 w-full h-full opacity-30" style={{ backgroundImage: 'linear-gradient(0deg, transparent 24%, #8b5cf6 25%, #8b5cf6 26%, transparent 27%, transparent 74%, #8b5cf6 75%, #8b5cf6 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #8b5cf6 25%, #8b5cf6 26%, transparent 27%, transparent 74%, #8b5cf6 75%, #8b5cf6 76%, transparent 77%, transparent)', backgroundSize: '50px 50px', transform: 'perspective(500px) rotateX(60deg) translateY(100px) scale(2)' }}></div>
+                  <div className="absolute inset-0 w-full h-full opacity-30" style={{ backgroundImage: 'linear-gradient(0deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #3b82f6 25%, #3b82f6 26%, transparent 27%, transparent 74%, #3b82f6 75%, #3b82f6 76%, transparent 77%, transparent)', backgroundSize: '50px 50px', transform: 'perspective(500px) rotateX(60deg) translateY(100px) scale(2)' }}></div>
                   
-                  <motion.div className="absolute w-16 h-16 bg-emerald-400 border-[3px] border-white shadow-[0_0_25px_#10b981] rounded-2xl" style={{ left: `calc(${playerX}% - 32px)`, top: `calc(${playerY}% - 32px)` }} animate={isInvincible ? { opacity: [1, 0.2, 1], scale: [1, 1.2, 1] } : (health < 30 ? { opacity: [1, 0.5, 1] } : {})} transition={isInvincible ? { repeat: Infinity, duration: 0.2 } : {}}>
-                    <img src={PHOTOS.avatar} className="w-full h-full object-cover grayscale contrast-125 rounded-[13px] pixel-art" />
+                  <motion.div className="absolute w-16 h-16 bg-blue-400 border-[3px] border-white shadow-[0_0_25px_#3b82f6] rounded-2xl" style={{ left: `calc(${playerX}% - 32px)`, top: `calc(${playerY}% - 32px)` }} animate={isInvincible ? { opacity: [1, 0.2, 1], scale: [1, 1.2, 1] } : (health < 30 ? { opacity: [1, 0.5, 1] } : {})} transition={isInvincible ? { repeat: Infinity, duration: 0.2 } : {}}>
+                    <img src={PHOTOS.avatar} className="w-full h-full object-cover grayscale contrast-125 rounded-[13px]" style={{ imageRendering: 'pixelated' }} />
                     {isInvincible && <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-yellow-400 animate-bounce"><Shield size={20} fill="currentColor" /></div>}
                   </motion.div>
                   {obstacles.map(ob => (
@@ -662,32 +659,46 @@
             setDialog(text);
           };
 
+          const petResponses = [
+            "¡¡Ay!! Con cuidadoooo!", 
+            "Awwwww, grasias 🥰", 
+            "Tenemos que hacer un golpe de estado en Venezuela 🥺", 
+            "Isaac me acaricia más suave... just saying."
+          ];
+          
+          const washResponses = [
+            "¡¡¡¡¡¡¡Está fría!!!! 🥶", 
+            "Glub glub glub 💧", 
+            "¡Ay, me entró jabón a la hoja!", 
+            "¡ESTÁ FRÍAAAA, LÍAAA!"
+          ];
+
           useEffect(() => {
             if (plantState === 'dead' || endResult) return;
             const interval = setInterval(() => {
               if (animation !== 'idle') return; 
               const dialogs = {
                 living: [
-                  "Me aburro... 😪", 
+                  "Zzzzz... 😪", 
                   "Hazme caso... 🥺", 
-                  "¿Me quieres? 🥀", 
-                  "¿Sabías que Isaac te ama?... Ups, solté la sopa. 🤫",
-                  "Qué buen día para no hacer fotosíntesis.",
-                  "Oye, cuéntame un chisme."
+                  "Me quieres? 🥀", 
+                  "¿Sabías que Isaac te ama?... Ups, solté la sopa.", 
+                  "Oye, Isaac me dijo que eres la mejor.", 
+                  "Me aburro... cuéntame un chisme."
                 ],
                 kitchen: [
-                  "TENGO HAMBRE HUMANAAA 👹", 
-                  "Dame ese bistec... 🥩", 
-                  "Aliméntame o muero... 💀",
-                  "Huele a quemado...",
-                  "¿Un vinito o qué?"
+                  "TENGO HAMBRE", 
+                  "Dame ese bistec ummmmmmm... 🥩", 
+                  "Aliméntame o mueroooo... 💀",
+                  "¿Sabías que Isaac no quiería entrar a la universidad?",
+                  "Ese bistec se ve sospechoso, como que raro..."
                 ],
                 bathroom: [
                   "No me mires... 🙈", 
                   "Estoy sucia... 🛁", 
-                  "¿Agüita? 💧",
-                  "Canta conmigo 🎤",
-                  "Ocupo shampoo especial para hojitas."
+                  "Waters 💧",
+                  "Canta conmigo en la ducha, porque tú cantas 🎤",
+                  "¡Trae el shampooooo!"
                 ]
               };
               setDialog(dialogs[room][Math.floor(Math.random() * dialogs[room].length)]);
@@ -703,13 +714,13 @@
 
           const handleInteract = (action) => {
             if (action === 'pet') {
-              const petDialogs = ["¡Ay! ¡Con cuidado! 🥰", "Rrr purrrr", "Me gusta...", "A Isaac le sale mejor."];
-              showImportantDialog(petDialogs[Math.floor(Math.random() * petDialogs.length)]);
+              const res = petResponses[Math.floor(Math.random() * petResponses.length)];
+              showImportantDialog(res);
               triggerAnimation('petting');
             }
             if (action === 'wash') {
-              const washDialogs = ["¡Está fría pero rico! 🥶💧", "Glub glub glub", "¡Mis hojas, mis hojas!"];
-              showImportantDialog(washDialogs[Math.floor(Math.random() * washDialogs.length)]);
+              const res = washResponses[Math.floor(Math.random() * washResponses.length)];
+              showImportantDialog(res);
               triggerAnimation('washing');
             }
             if (action === 'poison') {
@@ -736,7 +747,7 @@
                   <div className="absolute inset-0 bg-red-600 mix-blend-multiply opacity-50 animate-pulse pointer-events-none" />
                 )}
                 {endResult === 'success' && (
-                  <div className="absolute inset-0 bg-pink-500 mix-blend-overlay opacity-30 pointer-events-none" />
+                  <div className="absolute inset-0 bg-blue-500 mix-blend-overlay opacity-30 pointer-events-none" />
                 )}
 
                 {endResult === 'success' && [...Array(20)].map((_, i) => (
@@ -790,7 +801,7 @@
           return (
             <div className="h-full w-full bg-slate-950 flex flex-col items-center justify-between p-4 relative overflow-hidden select-none">
               <motion.div animate={{ backgroundColor: room === 'kitchen' ? '#881337' : (room === 'bathroom' ? '#172554' : '#14532d') }} className="absolute inset-0 z-0 transition-colors duration-500" />
-              <div className="relative z-20 w-full bg-amber-400 text-black font-black uppercase text-xs p-2 tracking-widest animate-pulse text-center rounded-2xl shadow-lg shrink-0">MISIÓN: Cuida la fucking planta</div>
+              <div className="relative z-20 w-full bg-yellow-400 text-black font-black uppercase text-xs p-2 tracking-widest animate-pulse text-center rounded-2xl shadow-lg shrink-0">MISIÓN: Cuida la fucking planta</div>
 
               <div className="flex-1 w-full flex flex-col landscape:flex-row items-center justify-center relative z-10 landscape:gap-8">
                 
@@ -816,7 +827,7 @@
                       transition={{ duration: animation === 'idle' ? 2 : 0.5, repeat: animation === 'idle' ? Infinity : (animation === 'petting' ? 2 : 0), ease: "easeInOut" }}
                       className="relative w-64 h-64 landscape:w-32 landscape:h-32 flex items-center justify-center drop-shadow-2xl"
                     >
-                        <img src={PHOTOS.plant} alt="Planta" className={`w-full h-full object-contain filter ${plantState === 'dead' ? 'grayscale brightness-50' : 'contrast-125'} pixel-art`} />
+                        <img src={PHOTOS.plant} alt="Planta" className={`w-full h-full object-contain filter ${plantState === 'dead' ? 'grayscale brightness-50' : 'contrast-125'}`} />
                         {plantState !== 'dead' && (
                           <>
                              <motion.div animate={{ scaleY: [1, 0.1, 1] }} transition={{ repeat: Infinity, duration: 4, delay: 1 }} className="absolute top-1/3 left-1/3 w-8 h-8 landscape:w-5 landscape:h-5 bg-white rounded-full border-2 border-black flex items-center justify-center"><div className="w-3 h-3 landscape:w-2 landscape:h-2 bg-black rounded-full translate-x-1" /></motion.div>
@@ -832,29 +843,29 @@
                         {room === 'kitchen' && (
                           <motion.div key="kitchen-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="flex landscape:flex-col gap-4">
                             <button onClick={handleKill} className="bg-rose-600 hover:bg-rose-500 text-white p-3 landscape:p-2 rounded-2xl font-bold flex flex-col items-center gap-1 border-b-4 border-rose-800 active:border-b-0 active:translate-y-1 transition-all shadow-lg"><Utensils size={24} /><span className="text-xs">Bistec Tieso</span></button>
-                            <button onClick={() => handleInteract('poison')} className="bg-violet-600 hover:bg-violet-500 text-white p-3 landscape:p-2 rounded-2xl font-bold flex flex-col items-center gap-1 border-b-4 border-violet-800 active:border-b-0 active:translate-y-1 transition-all shadow-lg"><FlaskConical size={24} /><span className="text-xs">Veneno (?)</span></button>
+                            <button onClick={() => handleInteract('poison')} className="bg-blue-600 hover:bg-blue-500 text-white p-3 landscape:p-2 rounded-2xl font-bold flex flex-col items-center gap-1 border-b-4 border-blue-800 active:border-b-0 active:translate-y-1 transition-all shadow-lg"><FlaskConical size={24} /><span className="text-xs">Veneno (?)</span></button>
                           </motion.div>
                         )}
-                        {room === 'living' && <motion.button key="act-pet" onClick={() => handleInteract('pet')} initial={{opacity:0}} animate={{opacity:1}} className="bg-amber-500 text-black p-3 landscape:p-2 rounded-2xl w-32 font-bold flex flex-col items-center border-b-4 border-amber-700 active:border-b-0 active:translate-y-1"><Hand className="mx-auto mb-1"/><span className="text-xs">Acariciar</span></motion.button>}
-                        {room === 'bathroom' && <motion.button key="act-wash" onClick={() => handleInteract('wash')} initial={{opacity:0}} animate={{opacity:1}} className="bg-blue-600 text-white p-3 landscape:p-2 rounded-2xl w-32 font-bold flex flex-col items-center border-b-4 border-blue-700 active:border-b-0 active:translate-y-1"><Droplets className="mx-auto mb-1"/><span className="text-xs">Bañar</span></motion.button>}
+                        {room === 'living' && <motion.button key="act-pet" onClick={() => handleInteract('pet')} initial={{opacity:0}} animate={{opacity:1}} className="bg-yellow-500 text-black p-3 landscape:p-2 rounded-2xl w-32 font-bold flex flex-col items-center border-b-4 border-yellow-700 active:border-b-0 active:translate-y-1"><Hand className="mx-auto mb-1"/><span className="text-xs">Acariciar</span></motion.button>}
+                        {room === 'bathroom' && <motion.button key="act-wash" onClick={() => handleInteract('wash')} initial={{opacity:0}} animate={{opacity:1}} className="bg-blue-500 text-white p-3 landscape:p-2 rounded-2xl w-32 font-bold flex flex-col items-center border-b-4 border-blue-700 active:border-b-0 active:translate-y-1"><Droplets className="mx-auto mb-1"/><span className="text-xs">Bañar</span></motion.button>}
                     </AnimatePresence>
                 </div>
               </div>
 
-              <div className="relative z-20 bg-black/40 backdrop-blur-md p-2 rounded-3xl flex gap-2 w-full justify-between max-w-xs landscape:max-w-md shrink-0 border border-white/10">
-                <button onClick={() => setRoom('living')} className={`flex-1 p-2 rounded-xl flex flex-col items-center transition-colors ${room === 'living' ? 'bg-amber-400 text-black shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Sofa size={20}/><span className="text-[10px] font-bold mt-1">SALA</span></button>
-                <button onClick={() => setRoom('kitchen')} className={`flex-1 p-2 rounded-xl flex flex-col items-center transition-colors ${room === 'kitchen' ? 'bg-rose-500 text-white shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Utensils size={20}/><span className="text-[10px] font-bold mt-1">COCINA</span></button>
-                <button onClick={() => setRoom('bathroom')} className={`flex-1 p-2 rounded-xl flex flex-col items-center transition-colors ${room === 'bathroom' ? 'bg-blue-500 text-white shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Bath size={20}/><span className="text-[10px] font-bold mt-1">BAÑO</span></button>
+              <div className="relative z-20 bg-black/50 backdrop-blur-md p-2 rounded-3xl flex gap-2 w-full justify-between max-w-xs landscape:max-w-md shrink-0 border border-white/10">
+                <button onClick={() => setRoom('living')} className={`flex-1 p-2 rounded-2xl flex flex-col items-center transition-colors ${room === 'living' ? 'bg-yellow-400 text-black shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Sofa size={20}/><span className="text-[10px] font-bold mt-1">SALA</span></button>
+                <button onClick={() => setRoom('kitchen')} className={`flex-1 p-2 rounded-2xl flex flex-col items-center transition-colors ${room === 'kitchen' ? 'bg-rose-500 text-white shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Utensils size={20}/><span className="text-[10px] font-bold mt-1">COCINA</span></button>
+                <button onClick={() => setRoom('bathroom')} className={`flex-1 p-2 rounded-2xl flex flex-col items-center transition-colors ${room === 'bathroom' ? 'bg-blue-500 text-white shadow-lg' : 'text-zinc-400 hover:text-white'}`}><Bath size={20}/><span className="text-[10px] font-bold mt-1">BAÑO</span></button>
               </div>
             </div>
           );
         };
 
-        // JUEGO 3: ACTION HERO (CAMARONES)
-        const ActionHeroGame = ({ onWin }) => {
+        // JUEGO 3.5: SHRIMP ACTION HERO
+        const ShrimpGame = ({ onWin }) => {
           const [player, setPlayer] = useState({ x: 10, y: 0, vy: 0, facingRight: true });
           const [bullets, setBullets] = useState([]);
-          const [zombies, setZombies] = useState([]);
+          const [shrimps, setShrimps] = useState([]);
           const [ammoPickups, setAmmoPickups] = useState([]);
           const [totems, setTotems] = useState([]); 
           const [hasTotem, setHasTotem] = useState(false); 
@@ -881,9 +892,9 @@
           ];
 
           const ROUNDS = [
-            { target: 10, spawnRate: 0.02, zombieSpeed: 0.25, hp: 3, ammoRate: 0.003 }, 
-            { target: 20, spawnRate: 0.035, zombieSpeed: 0.35, hp: 4, ammoRate: 0.005 }, 
-            { target: 35, spawnRate: 0.045, zombieSpeed: 0.45, hp: 5, ammoRate: 0.010 } 
+            { target: 10, spawnRate: 0.02, speed: 0.25, hp: 3, ammoRate: 0.003 }, 
+            { target: 20, spawnRate: 0.035, speed: 0.35, hp: 4, ammoRate: 0.005 }, 
+            { target: 35, spawnRate: 0.045, speed: 0.45, hp: 5, ammoRate: 0.010 } 
           ];
 
           const CLIP_SIZE = 12;
@@ -1000,7 +1011,7 @@
               setBullets(prev => prev.map(b => ({ ...b, x: b.x + (b.dir * 2.5) })).filter(b => b.x > -10 && b.x < 110));
 
               if (Math.random() < currentRoundConfig.spawnRate) {
-                 setZombies(prev => [...prev, { id: Math.random(), x: Math.random() > 0.5 ? 100 : -10, y: 0, hp: currentRoundConfig.hp }]);
+                 setShrimps(prev => [...prev, { id: Math.random(), x: Math.random() > 0.5 ? 100 : -10, y: 0, hp: currentRoundConfig.hp }]);
               }
 
               if (Math.random() < currentRoundConfig.ammoRate) { 
@@ -1015,19 +1026,11 @@
                   let nextPickups = prev.map(a => ({...a, y: Math.max(0, a.y - 0.5)}));
                   let collected = [];
                   let remaining = [];
-                  
                   nextPickups.forEach(a => {
-                      if (Math.abs(a.x - player.x) < 8 && Math.abs(a.y - player.y) < 8) {
-                          collected.push(a);
-                      } else {
-                          remaining.push(a);
-                      }
+                      if (Math.abs(a.x - player.x) < 8 && Math.abs(a.y - player.y) < 8) collected.push(a);
+                      else remaining.push(a);
                   });
-
-                  if (collected.length > 0) {
-                      setReserve(r => r + (collected.length * 12)); 
-                  }
-                  
+                  if (collected.length > 0) setReserve(r => r + (collected.length * 12)); 
                   return remaining;
               });
 
@@ -1035,50 +1038,42 @@
                   let nextTotems = prev.map(t => ({...t, y: Math.max(0, t.y - 0.5)}));
                   let collected = false;
                   let remaining = [];
-
                   nextTotems.forEach(t => {
-                      if (Math.abs(t.x - player.x) < 8 && Math.abs(t.y - player.y) < 8) {
-                          collected = true;
-                      } else {
-                          remaining.push(t);
-                      }
+                      if (Math.abs(t.x - player.x) < 8 && Math.abs(t.y - player.y) < 8) collected = true;
+                      else remaining.push(t);
                   });
-
-                  if (collected) {
-                      setHasTotem(true);
-                  }
-
+                  if (collected) setHasTotem(true);
                   return remaining;
               });
 
-              setZombies(prev => {
-                 let nextZombies = prev.map(z => {
-                     const dir = z.x > player.x ? -currentRoundConfig.zombieSpeed : currentRoundConfig.zombieSpeed;
+              setShrimps(prev => {
+                 let nextShrimps = prev.map(z => {
+                     const dir = z.x > player.x ? -currentRoundConfig.speed : currentRoundConfig.speed;
                      return { ...z, x: z.x + dir };
                  });
 
-                 nextZombies = nextZombies.map(z => {
+                 nextShrimps = nextShrimps.map(z => {
                      const hit = bullets.some(b => Math.abs(b.x - z.x) < 5 && Math.abs(b.y - z.y) < 10); 
                      if (hit) return { ...z, hp: z.hp - 1, hit: true };
                      return { ...z, hit: false };
                  });
                  
-                 let livingZombies = [];
+                 let livingShrimps = [];
                  let deadCount = 0;
-                 nextZombies.forEach(z => {
-                     if (z.hp > 0) livingZombies.push(z);
+                 nextShrimps.forEach(z => {
+                     if (z.hp > 0) livingShrimps.push(z);
                      else deadCount++;
                  });
 
                  if (deadCount > 0) setKillsInRound(k => k + deadCount);
 
-                 livingZombies.forEach(z => {
+                 livingShrimps.forEach(z => {
                      if (Math.abs(z.x - player.x) < 5 && Math.abs(z.y - player.y) < 8) {
                          setHealth(h => Math.max(0, h - 1));
                      }
                  });
 
-                 return livingZombies;
+                 return livingShrimps;
               });
 
               if (health <= 0) {
@@ -1088,7 +1083,7 @@
                       setTimeout(() => {
                           setHealth(100);
                           setResurrecting(false);
-                          setZombies(prev => prev.filter(z => Math.abs(z.x - player.x) > 30));
+                          setShrimps(prev => prev.filter(z => Math.abs(z.x - player.x) > 30));
                       }, 2500); 
                   } else {
                       setIsDying(true);
@@ -1114,7 +1109,7 @@
                 setTimeout(() => {
                   setRound(r => r + 1);
                   setKillsInRound(0);
-                  setZombies([]);
+                  setShrimps([]);
                   setBullets([]);
                   setRoundTransition(false);
                 }, 3000);
@@ -1141,8 +1136,8 @@
                         <div className="bg-rose-900/80 px-4 py-1 rounded-full border border-rose-500 text-white font-bold flex items-center gap-2">
                             <Heart size={16} className="fill-rose-500" /> {Math.floor(health)}%
                         </div>
-                        <div className={`px-4 py-1 rounded-full border text-white font-bold flex items-center gap-2 transition-all ${isReloading ? 'bg-orange-600 border-orange-400 animate-pulse' : (clip === 0 ? 'bg-rose-600 border-rose-400' : 'bg-amber-800/80 border-amber-500')}`}>
-                            <Zap size={16} className="fill-amber-500" /> 
+                        <div className={`px-4 py-1 rounded-full border text-white font-bold flex items-center gap-2 transition-all ${isReloading ? 'bg-orange-600 border-orange-400 animate-pulse' : (clip === 0 ? 'bg-blue-600 border-blue-400' : 'bg-yellow-600/80 border-yellow-500')}`}>
+                            <Zap size={16} className="fill-yellow-500" /> 
                             {isReloading ? "RECARGANDO..." : `${clip} / ${reserve}`}
                         </div>
                         {hasTotem && (
@@ -1151,8 +1146,8 @@
                             </div>
                         )}
                       </div>
-                      <div className="bg-stone-800/80 px-4 py-1 rounded-full border border-stone-500 text-white font-bold text-sm">
-                         RONDA {round}/{ROUNDS.length} | KILLS: {killsInRound}/{ROUNDS[round-1].target}
+                      <div className="bg-zinc-800/80 px-4 py-1 rounded-full border border-zinc-500 text-white font-bold text-sm">
+                         RONDA {round}/{ROUNDS.length} | CAMARONES: {killsInRound}/{ROUNDS[round-1].target}
                       </div>
                    </div>
 
@@ -1165,7 +1160,7 @@
 
                    {ammoPickups.map(a => (
                        <div key={a.id} className="absolute z-15 animate-bounce" style={{ left: `${a.x}%`, bottom: `${8 + a.y}%` }}>
-                           <Package size={24} className="text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]" />
+                           <Package size={24} className="text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]" />
                        </div>
                    ))}
                    {totems.map(t => (
@@ -1175,24 +1170,25 @@
                    ))}
 
                    <div className="absolute w-12 h-16 z-20 transition-transform" style={{ left: `${player.x}%`, bottom: `${8 + player.y}%`, transform: `scaleX(${player.facingRight ? 1 : -1})` }}>
-                      <img src={PHOTOS.avatar} className="w-full h-full object-cover rounded-xl border-2 border-white shadow-lg pixel-art" />
-                      <img src={PHOTOS.gun} className="absolute top-6 -right-4 w-8 h-6 object-contain pixel-art" />
+                      <img src={PHOTOS.avatar} className="w-full h-full object-cover rounded-xl border-2 border-white shadow-lg" style={{ imageRendering: 'pixelated' }} />
+                      <img src={PHOTOS.gun} className="absolute top-6 -right-4 w-8 h-6 object-contain" style={{ imageRendering: 'pixelated' }} />
                       {isReloading && (
                          <div className="absolute -top-4 left-0 w-full h-1 bg-zinc-700 rounded-full">
-                           <motion.div initial={{width:0}} animate={{width:"100%"}} transition={{duration: 1.5}} className="h-full bg-amber-400" />
+                           <motion.div initial={{width:0}} animate={{width:"100%"}} transition={{duration: 1.5}} className="h-full bg-yellow-400" />
                          </div>
                       )}
                    </div>
 
-                   {zombies.map(z => (
-                      <div key={z.id} className="absolute w-12 h-16 z-15 grayscale contrast-125" style={{ left: `${z.x}%`, bottom: `${8 + z.y}%` }}>
-                         <img src={PHOTOS.zombie} className="w-full h-full object-cover pixel-art" />
+                   {/* CAMARONES RENDER */}
+                   {shrimps.map(z => (
+                      <div key={z.id} className="absolute w-16 h-16 z-15 grayscale-[20%] drop-shadow-xl" style={{ left: `${z.x}%`, bottom: `${8 + z.y}%` }}>
+                         <img src={PHOTOS.shrimp} className="w-full h-full object-contain filter drop-shadow-lg" style={{ imageRendering: 'pixelated' }} />
                          <div className="absolute -top-2 w-full h-1 bg-rose-900"><div className="h-full bg-emerald-500" style={{ width: `${(z.hp/ROUNDS[round-1].hp)*100}%` }} /></div>
                       </div>
                    ))}
 
                    {bullets.map(b => (
-                      <div key={b.id} className="absolute w-2 h-2 bg-amber-400 rounded-full z-15 shadow-[0_0_5px_yellow]" style={{ left: `${b.x}%`, bottom: `${8 + b.y}%` }} />
+                      <div key={b.id} className="absolute w-2 h-2 bg-yellow-400 rounded-full z-15 shadow-[0_0_8px_yellow]" style={{ left: `${b.x}%`, bottom: `${8 + b.y}%` }} />
                    ))}
                </motion.div>
 
@@ -1201,7 +1197,7 @@
                
                {roundTransition && (
                  <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/90 flex-col">
-                   <h2 className="text-4xl text-amber-400 font-black animate-bounce mb-2">¡RONDA COMPLETADA!</h2>
+                   <h2 className="text-4xl text-yellow-400 font-black animate-bounce mb-2">¡RONDA COMPLETADA!</h2>
                    <p className="text-zinc-300 text-xl font-bold">Prepárate para la Ronda {round + 1}...</p>
                  </div>
                )}
@@ -1212,7 +1208,7 @@
                </div>
 
                <div className="absolute bottom-4 right-4 z-40 flex gap-4">
-                  <button onClick={handleReloadLogic} className={`w-16 h-16 backdrop-blur-md rounded-2xl border-[3px] flex items-center justify-center active:scale-95 shadow-lg transition-colors ${isReloading ? 'bg-zinc-600 border-zinc-500' : 'bg-amber-600/80 border-amber-400'}`}>
+                  <button onClick={handleReloadLogic} className={`w-16 h-16 backdrop-blur-md rounded-2xl border-[3px] flex items-center justify-center active:scale-95 shadow-lg transition-colors ${isReloading ? 'bg-zinc-600 border-zinc-500' : 'bg-blue-600/80 border-blue-400'}`}>
                      <RotateCw size={32} className={`text-white ${isReloading ? 'animate-spin' : ''}`} />
                   </button>
                   <button onMouseDown={() => handleTouchStart('shoot')} onMouseUp={() => handleTouchEnd('shoot')} onTouchStart={(e) => { e.preventDefault(); handleTouchStart('shoot'); }} onTouchEnd={(e) => { e.preventDefault(); handleTouchEnd('shoot'); }} className={`w-16 h-16 backdrop-blur-md rounded-2xl border-[3px] flex items-center justify-center active:scale-95 shadow-lg ${clip > 0 ? 'bg-rose-500/80 border-rose-400' : 'bg-zinc-600/80 border-zinc-500 cursor-not-allowed'}`}><Crosshair size={32} className="text-white" /></button>
@@ -1220,15 +1216,15 @@
                </div>
                
                <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-xs font-mono bg-black/50 px-2 py-1 rounded pointer-events-none">
-                  PC: [A/D] Mover [W] Saltar [ESPACIO] Disparar [R] Recargar
+                  
                </div>
 
-               {gameOver && health <= 0 && <RetryScreen onRetry={() => { setHealth(100); setZombies([]); setBullets([]); setGameOver(false); setKillsInRound(0); setRound(1); setClip(12); setReserve(24); setHasTotem(false); setTotems([]); setIsDying(false); }} message="¡Te devoraron los camarones, Lía! 🦐" />}
+               {gameOver && health <= 0 && <RetryScreen onRetry={() => { setHealth(100); setShrimps([]); setBullets([]); setGameOver(false); setKillsInRound(0); setRound(1); setClip(12); setReserve(24); setHasTotem(false); setTotems([]); setIsDying(false); }} message="¡Te devoraron los camarones!" />}
             </div>
           );
         };
 
-        // JUEGO 4: EXPEDITION ANTARCTICA
+        // JUEGO 4: EXPEDITION ANTARCTICA (MEJORADO Y MÁS LARGO)
         const AntarcticaGame = ({ onWin }) => {
           const [player, setPlayer] = useState({ x: 50, y: 50, vy: 0 });
           const [platforms, setPlatforms] = useState([
@@ -1237,11 +1233,14 @@
             { id: 3, x: 60, y: 60, w: 25, h: 4 },
             { id: 4, x: 20, y: 85, w: 25, h: 4 },
           ]);
+          const [icicles, setIcicles] = useState([]);
           const [score, setScore] = useState(0);
           const [gameOver, setGameOver] = useState(false);
           const [input, setInput] = useState({ left: false, right: false });
           const [gameWon, setGameWon] = useState(false);
+          const [showWarning, setShowWarning] = useState(false);
 
+          // Meta final ajustada para que tome un buen rato
           const TARGET_SCORE = 10000;
 
           useEffect(() => {
@@ -1267,39 +1266,46 @@
           const handleTouchStart = (action) => setInput(prev => ({ ...prev, [action]: true }));
           const handleTouchEnd = (action) => setInput(prev => ({ ...prev, [action]: false }));
 
+          // Alerta de tormenta a 1/3 del camino
+          useEffect(() => {
+            if (score > TARGET_SCORE / 3 && score < (TARGET_SCORE / 3) + 200) {
+               setShowWarning(true);
+            } else {
+               setShowWarning(false);
+            }
+          }, [score]);
+
           useEffect(() => {
             if (gameOver || gameWon) return;
 
             const loop = setInterval(() => {
                setPlayer(p => {
-                  let newVy = p.vy - 0.4; // Gravedad
+                  let newVy = p.vy - 0.25; // Gravedad MÁS LENTA (más controlable)
                   let newX = p.x;
                   
-                  if (input.left) newX -= 1.8;
-                  if (input.right) newX += 1.8;
+                  if (input.left) newX -= 1.2; // Movimiento horizontal más lento y preciso
+                  if (input.right) newX += 1.2;
 
-                  // Dar la vuelta a la pantalla
                   if (newX < -5) newX = 105;
                   if (newX > 105) newX = -5;
 
                   let newY = p.y + newVy;
 
-                  // Colisiones
                   if (newVy < 0) {
                       platforms.forEach(plat => {
                           if (p.y >= plat.y && newY <= plat.y + plat.h && newX + 5 > plat.x && newX - 5 < plat.x + plat.w) {
                               newY = plat.y + plat.h;
-                              newVy = 7.5; // Fuerza de salto
+                              newVy = 6.5; // Salto balanceado con la nueva gravedad
                           }
                       });
                   }
 
-                  // Scroll de cámara
                   let scroll = 0;
                   if (newY > 50) {
                       scroll = newY - 50;
                       newY = 50;
-                      setScore(s => s + Math.floor(scroll * 8));
+                      // El puntaje sube más lento ahora
+                      setScore(s => s + Math.floor(scroll * 4));
                   }
 
                   if (scroll > 0) {
@@ -1307,11 +1313,13 @@
                           let nextPlats = plats.map(pl => ({ ...pl, y: pl.y - scroll })).filter(pl => pl.y > -10);
                           const topPlat = nextPlats[nextPlats.length - 1];
                           if (topPlat && topPlat.y < 80) {
+                              // A medida que subes, las plataformas se achican un POQUITO, sin ser imposibles
+                              const shrinkFactor = Math.max(15, 25 - (score / 2000));
                               nextPlats.push({
                                   id: Math.random(),
-                                  x: Math.random() * 75, 
-                                  y: topPlat.y + 15 + Math.random() * 20,
-                                  w: 25, 
+                                  x: Math.random() * (100 - shrinkFactor), 
+                                  y: topPlat.y + 15 + Math.random() * 15,
+                                  w: shrinkFactor, 
                                   h: 4
                               });
                           }
@@ -1325,14 +1333,46 @@
 
                   return { x: newX, y: newY, vy: newVy };
                });
+
+               // TORMENTA DE HIELO (Obstáculos horizontales a partir de 1/3)
+               if (score > TARGET_SCORE / 3) {
+                   const stormIntensity = score > (TARGET_SCORE / 1.5) ? 0.012 : 0.006;
+                   if (Math.random() < stormIntensity) {
+                       setIcicles(prev => [...prev, {
+                           id: Math.random(),
+                           x: Math.random() > 0.5 ? 110 : -10, // Salen de los lados
+                           y: Math.random() * 80 + 10, // A diferentes alturas
+                           speed: score > (TARGET_SCORE / 1.5) ? 0.9 : 0.6, // Velocidad justa
+                           dir: Math.random() > 0.5 ? 1 : -1
+                       }]);
+                   }
+               }
+
+               setIcicles(prev => {
+                   let alive = [];
+                   prev.forEach(ice => {
+                       ice.x += (ice.speed * ice.dir);
+                       if (ice.x > -20 && ice.x < 120) alive.push(ice);
+
+                       // Colisión con el jugador
+                       setPlayer(p => {
+                           if (Math.abs(ice.x - p.x) < 5 && Math.abs(ice.y - p.y) < 5) {
+                               setGameOver(true);
+                           }
+                           return p;
+                       });
+                   });
+                   return alive;
+               });
+
             }, 16);
             return () => clearInterval(loop);
-          }, [input, gameOver, platforms, gameWon]);
+          }, [input, gameOver, platforms, gameWon, score]);
 
           useEffect(() => {
             if (score >= TARGET_SCORE && !gameWon) {
                setGameWon(true);
-               setTimeout(onWin, 2000);
+               setTimeout(onWin, 2500);
             }
           }, [score, gameWon, onWin]);
 
@@ -1348,20 +1388,47 @@
              setGameOver(false);
           };
 
+          // Línea de Meta (Corregido para que baje desde el cielo naturalmente)
+          const goalBottom = 50 + (TARGET_SCORE - score) / 4;
+
           return (
             <div className="h-full w-full relative overflow-hidden select-none font-sans bg-sky-950">
-               <div className="absolute inset-0 opacity-60 bg-cover bg-center" style={{ backgroundImage: `url(${PHOTOS.antarctica_bg})` }} />
+               <div className="absolute inset-0 opacity-60 bg-cover bg-center" style={{ backgroundImage: `url(${PHOTOS.antarctica_bgr3})` }} />
                
                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 animate-pulse pointer-events-none" />
 
-               <div className="absolute top-6 left-6 z-30 flex flex-col gap-2">
-                  <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border-2 border-white/20 text-white font-bold text-lg shadow-lg">
-                     ALTITUD: {score}m / {TARGET_SCORE}m
-                  </div>
-                  <div className="w-full h-3 bg-black/50 rounded-full overflow-hidden border border-white/10 mt-1">
-                     <div className="h-full bg-cyan-400" style={{ width: `${Math.min((score/TARGET_SCORE)*100, 100)}%` }} />
+               {/* Meta visible al final */}
+               {score > (TARGET_SCORE - 600) && (
+                   <div 
+                     className="absolute w-full h-8 bg-yellow-400 border-b-[4px] border-yellow-600 shadow-[0_0_30px_yellow] z-0 flex items-center justify-center overflow-hidden"
+                     style={{ bottom: `${goalBottom}%` }}
+                   >
+                       <span className="text-yellow-900 font-black tracking-[1em] text-xl opacity-50">META META META</span>
+                   </div>
+               )}
+
+               <div className="absolute top-6 left-6 right-6 z-30 flex justify-between items-start">
+                  <div className="flex flex-col gap-2 w-48">
+                    <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border-2 border-white/20 text-white font-bold text-lg shadow-lg">
+                       ALTITUD: {score}m
+                    </div>
+                    <div className="w-full h-3 bg-black/50 rounded-full overflow-hidden border border-white/10 mt-1">
+                       <div className="h-full bg-cyan-400" style={{ width: `${Math.min((score/TARGET_SCORE)*100, 100)}%` }} />
+                    </div>
                   </div>
                </div>
+
+               {/* Aviso de tormenta */}
+               {showWarning && (
+                 <div className="absolute top-24 left-0 w-full flex justify-center z-40 pointer-events-none">
+                    <motion.div 
+                      initial={{ scale: 0 }} animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 0.5 }}
+                      className="bg-rose-600 border-4 border-white text-white px-6 py-2 rounded-xl font-black shadow-[0_0_30px_red]"
+                    >
+                      ⚠️ ¡TORMENTA DE HIELO EN CAMINO! ⚠️
+                    </motion.div>
+                 </div>
+               )}
 
                {platforms.map(p => (
                    <div 
@@ -1371,11 +1438,21 @@
                    />
                ))}
 
+               {icicles.map(ice => (
+                   <div 
+                     key={ice.id} 
+                     className="absolute w-8 h-8 z-15 flex items-center justify-center text-2xl drop-shadow-[0_0_10px_cyan]" 
+                     style={{ left: `calc(${ice.x}% - 16px)`, bottom: `${ice.y}%` }} 
+                   >
+                     🧊
+                   </div>
+               ))}
+
                <div 
                  className="absolute w-12 h-12 z-20 transition-transform" 
                  style={{ left: `calc(${player.x}% - 24px)`, bottom: `${player.y}%`, transform: `scaleX(${player.facingRight ? 1 : -1})` }}
                >
-                  <img src={PHOTOS.avatar} className="w-full h-full object-cover rounded-full border-[3px] border-white shadow-[0_0_15px_rgba(255,255,255,0.8)] pixel-art" />
+                  <img src={PHOTOS.avatar} className="w-full h-full object-cover rounded-full border-[3px] border-white shadow-[0_0_15px_rgba(255,255,255,0.8)]" style={{ imageRendering: 'pixelated' }} />
                </div>
                
                {gameWon && (
@@ -1404,11 +1481,7 @@
                   </button>
                </div>
 
-               <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 text-sm font-bold bg-black/50 px-4 py-2 rounded-xl pointer-events-none">
-                  Usa las flechas [A] y [D] para moverte
-               </div>
-
-               {gameOver && <RetryScreen onRetry={resetGame} message="¡Te caíste al agua helada! La Antártida no perdona." />}
+               {gameOver && <RetryScreen onRetry={resetGame} message="Moriste de hipotérmica o algo así. Es la antártida." />}
             </div>
           );
         };
@@ -1422,17 +1495,17 @@
 
           // Fotos de cosas que SI le gustan
           const goodItemsDef = [
-            { img: PHOTOS.mangos, text: "MANGOS", type: 'good' },
-            { img: PHOTOS.sixseven, text: "67", type: 'good' },
-            { img: PHOTOS.quiz4, text: "CHARLIE K.", type: 'good' },
+            { img: PHOTOS.quiz4, text: "5sos", type: 'good' },
+            { img: PHOTOS.shawarma, text: "shawarma", type: 'good' },
+            { img: PHOTOS.nahla, text: "Nahla", type: 'good' },
             { img: PHOTOS.avatar, text: "Tu", type: 'good' }
           ];
 
           // Fotos de cosas que NO le gustan
           const badItemsDef = [
-            { img: PHOTOS.bad1, text: "Caca", type: 'bad' },
-            { img: PHOTOS.bad2, text: "NickAvocado", type: 'bad' },
-            { img: PHOTOS.bad3, text: "FreeFire", type: 'bad' }
+            { img: PHOTOS.bad1, text: "Fifes", type: 'bad' },
+            { img: PHOTOS.bad2, text: "Conejos", type: 'bad' },
+            { img: PHOTOS.bad3, text: "Popo", type: 'bad' }
           ];
 
           useEffect(() => {
@@ -1485,13 +1558,13 @@
           };
 
           return (
-             <div className="h-full w-full bg-gradient-to-br from-fuchsia-950 to-purple-950 relative overflow-hidden flex flex-col items-center justify-center select-none">
+             <div className="h-full w-full bg-gradient-to-br from-blue-950 to-indigo-950 relative overflow-hidden flex flex-col items-center justify-center select-none">
                
-               {shake && <div className="absolute inset-0 bg-rose-600/30 z-40 pointer-events-none animate-pulse" />}
+               {shake && <div className="absolute inset-0 bg-red-600/30 z-40 pointer-events-none animate-pulse" />}
 
                <div className="absolute top-12 landscape:top-4 text-center z-20 px-4 pointer-events-none">
-                 <h2 className="text-3xl landscape:text-xl font-black text-fuchsia-200 drop-shadow-md mb-2 landscape:mb-1">Llena nuestro corazón</h2>
-                 <p className="text-sm landscape:text-xs text-fuchsia-300 font-medium">Atrapa lo que es tuff❤️‍🩹</p>
+                 <h2 className="text-3xl landscape:text-xl font-black text-yellow-200 drop-shadow-md mb-2 landscape:mb-1">Llena nuestro corazón</h2>
+                 <p className="text-sm landscape:text-xs text-yellow-300 font-medium">Atrapa lo que es tuff❤️‍🩹</p>
                </div>
 
                <motion.div 
@@ -1502,13 +1575,13 @@
                   <i className="fa-solid fa-heart text-[14rem] landscape:text-[10rem] text-white/10 absolute top-0 left-0 right-0 bottom-0 text-center leading-[16rem] landscape:leading-[10rem]"></i>
                   
                   <motion.i 
-                    className="fa-solid fa-heart text-fuchsia-500 absolute top-0 left-0 right-0 bottom-0 text-center leading-[16rem] landscape:leading-[10rem] text-[14rem] landscape:text-[10rem]"
+                    className="fa-solid fa-heart text-blue-500 absolute top-0 left-0 right-0 bottom-0 text-center leading-[16rem] landscape:leading-[10rem] text-[14rem] landscape:text-[10rem]"
                     animate={{ 
                       scale: 0.5 + (Math.min(fill, 100) / 200),
                       opacity: 0.2 + (Math.min(fill, 100) / 125)
                     }}
                     transition={{ type: "spring", bounce: 0.4 }}
-                    style={{ filter: `drop-shadow(0 0 ${fill / 2}px rgba(217,70,239,1))` }}
+                    style={{ filter: `drop-shadow(0 0 ${fill / 2}px rgba(59,130,246,1))` }}
                   />
                   
                   <span className="absolute z-20 font-black text-white text-3xl landscape:text-xl mix-blend-overlay drop-shadow-lg">
@@ -1528,14 +1601,14 @@
                      onTouchStart={(e) => { e.preventDefault(); handleTap(item.id, item.type); }}
                      className={`absolute flex flex-col items-center justify-center p-2 cursor-pointer bg-white/10 backdrop-blur-md rounded-2xl border-[3px] z-30 ${
                        item.type === 'bad' 
-                         ? 'border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.5)]' 
-                         : 'border-fuchsia-400 shadow-[0_0_20px_rgba(217,70,239,0.5)]'
+                         ? 'border-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]' 
+                         : 'border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.5)]'
                      }`}
                      style={{ left: `${item.x}%`, top: `${item.y}%` }}
                      whileTap={{ scale: 0.8 }}
                    >
                       <img src={item.img} className={`w-16 h-16 md:w-20 md:h-20 landscape:w-12 landscape:h-12 object-cover rounded-xl mb-1 shadow-inner pointer-events-none ${item.type === 'bad' ? 'grayscale' : ''}`} alt="recuerdo" />
-                      <span className={`text-[10px] md:text-xs landscape:text-[8px] font-bold uppercase tracking-wider pointer-events-none ${item.type === 'bad' ? 'text-rose-200' : 'text-fuchsia-100'}`}>
+                      <span className={`text-[10px] md:text-xs landscape:text-[8px] font-bold uppercase tracking-wider pointer-events-none ${item.type === 'bad' ? 'text-red-200' : 'text-yellow-100'}`}>
                         {item.text}
                       </span>
                    </motion.div>
@@ -1548,12 +1621,12 @@
                       initial={{ opacity: 0, scale: 0 }} 
                       animate={{ opacity: 1, scale: [0, 1.2, 1] }} 
                       transition={{ type: "spring", duration: 1 }}
-                      className="absolute inset-0 flex items-center justify-center z-40 bg-fuchsia-950/90 backdrop-blur-sm"
+                      className="absolute inset-0 flex items-center justify-center z-40 bg-blue-950/90 backdrop-blur-sm"
                    >
                       <div className="text-center p-6 pointer-events-none">
-                         <i className="fa-solid fa-heart text-9xl landscape:text-7xl text-fuchsia-400 drop-shadow-[0_0_60px_rgba(217,70,239,1)] animate-bounce mb-8 landscape:mb-4"></i>
+                         <i className="fa-solid fa-heart text-9xl landscape:text-7xl text-yellow-400 drop-shadow-[0_0_60px_rgba(250,204,21,1)] animate-bounce mb-8 landscape:mb-4"></i>
                          <h1 className="text-4xl md:text-6xl landscape:text-3xl font-black text-white mb-4 landscape:mb-2 leading-tight">¡CORAZÓN<br/>LLENO!</h1>
-                         <p className="text-xl landscape:text-sm text-fuchsia-200 font-medium">La mezcla perfecta ❤️‍🩹❤️‍🩹</p>
+                         <p className="text-xl landscape:text-sm text-yellow-200 font-medium">La mezcla perfecta ❤️‍🩹❤️‍🩹</p>
                       </div>
                    </motion.div>
                  )}
@@ -1564,22 +1637,22 @@
 
         // PANTALLA FINAL
         const FinalScreen = ({ onRestart }) => (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full w-full bg-purple-900 flex flex-col items-center justify-center p-4 overflow-hidden relative select-none">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full w-full bg-slate-950 flex flex-col items-center justify-center p-4 overflow-hidden relative select-none">
             <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-            <motion.div animate={{ rotate: [0, 2, -2, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="z-10 bg-zinc-900 border-[3px] border-violet-500 rounded-3xl p-2 shadow-[0_0_40px_rgba(139,92,246,0.3)] max-w-sm landscape:max-w-2xl w-full rotate-1">
+            <motion.div animate={{ rotate: [0, 2, -2, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="z-10 bg-zinc-900 border-[3px] border-blue-500 rounded-3xl p-2 shadow-[0_0_40px_rgba(59,130,246,0.3)] max-w-sm landscape:max-w-2xl w-full rotate-1">
               <div className="bg-slate-950 rounded-2xl p-8 landscape:p-6 flex flex-col landscape:flex-row items-center justify-center text-center landscape:text-left space-y-6 landscape:space-y-0 landscape:gap-6 border border-white/5">
-                <div className="w-40 h-40 landscape:w-28 landscape:h-28 bg-black overflow-hidden border-[4px] border-violet-500 rounded-full shadow-[0_0_30px_rgba(139,92,246,0.5)] shrink-0">
-                    <img src={PHOTOS.avatar} className="w-full h-full object-cover" />
+                <div className="w-40 h-40 landscape:w-28 landscape:h-28 bg-black overflow-hidden border-[4px] border-blue-500 rounded-full shadow-[0_0_30px_rgba(59,130,246,0.5)] shrink-0">
+                    <img src={PHOTOS.avatar} className="w-full h-full object-cover" style={{ imageRendering: 'pixelated' }} />
                 </div>
                 <div className="flex flex-col items-center landscape:items-start w-full">
-                  <h1 className="text-4xl landscape:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400 uppercase tracking-tighter drop-shadow-sm mb-2">QUEEN<br/>LÍA</h1>
-                  <p className="font-bold text-violet-200 leading-relaxed text-xl landscape:text-base italic w-full text-center">
-                    "Emmmm, eso fue todo... por ahora. Quizas en un futuro agregue nuevas cosas 👀👀👀"
+                  <h1 className="text-4xl landscape:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-yellow-400 uppercase tracking-tighter drop-shadow-sm mb-2">HERMOSOSOSOSOSOSAAAAA<br/>LÍA</h1>
+                  <p className="font-bold text-blue-200 leading-relaxed text-xl landscape:text-base italic w-full text-center">
+                    "Esto lo hice por y para ti. Espero que te haya gustado y que hayas disfrutado cada parte tanto como yo disfruté haciéndola. Gracias por ser tan increíble, por tu sonrisa, tu risa, tu compañía y por ser tú. Eres la mejor cosa que me ha pasado y no puedo esperar para seguir creando recuerdos juntos. Te AMOOOOOO muchísimo, Lía Ameeran. De: Isaac."
                   </p>
                 </div>
               </div>
             </motion.div>
-            <motion.button whileHover={{ scale: 1.05 }} onClick={onRestart} className="mt-12 landscape:mt-6 z-10 flex items-center gap-2 bg-violet-600 text-white font-bold py-4 px-8 landscape:py-3 landscape:px-6 rounded-2xl shadow-[0_0_20px_rgba(124,58,237,0.5)] active:scale-95 transition-all">
+            <motion.button whileHover={{ scale: 1.05 }} onClick={onRestart} className="mt-12 landscape:mt-6 z-10 flex items-center gap-2 bg-blue-600 text-white font-bold py-4 px-8 landscape:py-3 landscape:px-6 rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.5)] active:scale-95 transition-all">
               <RefreshCcw size={20} /> VOLVER A JUGAR
             </motion.button>
           </motion.div>
@@ -1624,31 +1697,31 @@
             { text: "Ahora sí..." },
             { text: "A ver qué tal tus reflejos" },
             { text: "Desliza para no morir" },
-            { text: "15 segundos porque es lo que duro yo 🥀🥀🥀" }
+            { text: "15 segundos porque es lo que duro yo (estudiando)🥀🥀🥀" }
           ];
 
           const plantIntroSlides = [
-            { text: "Sabía que necesitarías ayuda...", sub: "Eres muuuuuy manca 👎🏻" },
-            { text: "Probemos otra cosa" },
-            { text: "Cuida esta planta porfavor, es de mi primo" }
+            { text: "Sabía que necesitarías ayuda...", sub: "Eres muuuuuy malaaaa 👎🏻" },
+            { text: "Probemos algo más fácil..." },
+            { text: "Cuida esta planta porfavor, es de mi primo :D" }
           ];
 
           const shrimpIntroSlides = [
-            { text: "Me dijiste que te gustaban los camarones..." },
-            { text: "Pero estos no son para comer 🦐", img: PHOTOS.shrimp },
-            { text: "¡Acaba con los camarones mutantes! 🔫" },
+            { text: "Acaba de pasar algo terrible..." },
+            { text: "En una marisquería se revelaron los camarones del lugar", img: PHOTOS.shrimp },
+            { text: "¡Acaba con los camarones mutantes malvados!" },
             { text: "Sobrevive 3 rondas" }
           ];
 
           const antarcticaIntroSlides = [
             { text: "Sé muy bien que tu juego favorito en Roblox es Expedition Antarctica..." },
             { text: "Así que te preparé algo especial ❄️", img: PHOTOS.antarctica_bg },
-            { text: "Salta por las plataformas de hielo hasta llegar a la cima 🏔️" },
-            { text: "¡Usa los botones para moverte y no te caigas al agua helada!" }
+            { text: "Salta por las plataformas de hielo hasta llegar a los 10,000 metros" },
+            { text: "¡Y ten cuidado con la tormenta de hielo!" }
           ];
 
           const loveIntroSlides = [
-            { text: "Después de sobrevivir a la expedición... " },
+            { text: "Después de sobrevivir a la antártida... " },
             { text: "Toca armar algo pipirisnais 💖", sub: "Es hora de ponernos románticos jejejejejej" },
             { text: "A ver qué tan buena eres para esto, si fallas... eh... no sé... ijijijiijiji" }
           ];
@@ -1664,12 +1737,12 @@
                     className="h-full w-full flex flex-col items-center justify-center bg-[#050505] relative z-50"
                     exit={{ opacity: 0 }}
                   >
-                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15),transparent_70%)] pointer-events-none" />
+                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
                      <motion.button 
                        onClick={handleStart}
                        whileHover={{ scale: 1.05 }}
                        whileTap={{ scale: 0.95 }}
-                       className="bg-violet-600 border-[3px] border-violet-400 text-white font-black text-2xl md:text-4xl py-5 px-12 rounded-3xl shadow-[0_0_40px_rgba(139,92,246,0.6)] animate-pulse tracking-wide"
+                       className="bg-blue-600 border-[3px] border-blue-400 text-white font-black text-2xl md:text-4xl py-5 px-12 rounded-3xl shadow-[0_0_40px_rgba(59,130,246,0.6)] animate-pulse tracking-wide"
                      >
                         Empezar
                      </motion.button>
@@ -1684,7 +1757,7 @@
                 {stage === 'runner_intro' && <SlideSequence key="runner_intro" slides={runnerIntroSlides} onComplete={() => setStage('game1')} />}
                 {stage === 'game1' && (
                   <div key="game1" className="h-full w-full">
-                     <motion.div initial={{opacity: 1}} animate={{opacity: 0}} transition={{delay: 2, duration: 0.5}} className="absolute inset-0 z-40 bg-black/80 flex items-center justify-center pointer-events-none"><h1 className="text-4xl text-violet-400 font-black tracking-widest drop-shadow-lg">DESLIZA</h1></motion.div>
+                     <motion.div initial={{opacity: 1}} animate={{opacity: 0}} transition={{delay: 2, duration: 0.5}} className="absolute inset-0 z-40 bg-black/80 flex items-center justify-center pointer-events-none"><h1 className="text-4xl text-blue-400 font-black tracking-widest drop-shadow-lg">DESLIZA</h1></motion.div>
                      <CyberRunner onWin={() => setStage('plant_intro')} />
                   </div>
                 )}
@@ -1695,7 +1768,7 @@
                 )}
 
                 {stage === 'shrimp_intro' && <SlideSequence key="shrimp_intro" slides={shrimpIntroSlides} onComplete={() => setStage('game_shrimp')} />}
-                {stage === 'game_shrimp' && <ActionHeroGame key="game_shrimp" onWin={() => setStage('antarctica_intro')} />}
+                {stage === 'game_shrimp' && <ShrimpGame key="game_shrimp" onWin={() => setStage('antarctica_intro')} />}
                 
                 {stage === 'antarctica_intro' && <SlideSequence key="antarctica_intro" slides={antarcticaIntroSlides} onComplete={() => setStage('game_antarctica')} />}
                 {stage === 'game_antarctica' && <AntarcticaGame key="game_antarctica" onWin={() => setStage('love_intro')} />}
@@ -1705,7 +1778,7 @@
 
                 {stage === 'final_screen' && <FinalScreen key="final" onRestart={() => setStage('start')} />}
               </AnimatePresence>
-              <div className="fixed bottom-2 right-2 text-[10px] text-zinc-700 font-mono z-50 opacity-50 pointer-events-none">v19.0 // LIA_BLUE_YELLOW</div>
+              <div className="fixed bottom-2 right-2 text-[10px] text-zinc-700 font-mono z-50 opacity-50 pointer-events-none">holiwis kiwi</div>
             </div>
           );
         }
